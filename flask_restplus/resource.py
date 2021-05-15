@@ -24,6 +24,7 @@ class Resource(MethodView):
     '''
 
     representations = None
+    consumes = None
     method_decorators = []
 
     def __init__(self, api=None, *args, **kwargs):
@@ -47,6 +48,7 @@ class Resource(MethodView):
             return resp
 
         representations = self.representations or {}
+        consumes = self.consumes or {}
 
         mediatype = request.accept_mimetypes.best_match(representations, default=None)
         if mediatype in representations:
