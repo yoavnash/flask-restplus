@@ -216,7 +216,7 @@ class Swagger(object):
             'paths': not_none_sorted(paths),
             'info': infos,
             'produces': list(iterkeys(self.api.representations)),
-            'consumes': ['application/json'],
+            'consumes': list(iterkeys(self.api.consumes)),
             'securityDefinitions': self.api.authorizations or None,
             'security': self.security_requirements(self.api.security) or None,
             'tags': tags,
