@@ -216,7 +216,7 @@ class Swagger(object):
             'paths': not_none_sorted(paths),
             'info': infos,
             'produces': list(iterkeys(self.api.representations)),
-            'consumes': list(iterkeys(self.api.consumes)),
+            'consumes': list(iterkeys(self.api.representations)),
             'securityDefinitions': self.api.authorizations or None,
             'security': self.security_requirements(self.api.security) or None,
             'tags': tags,
@@ -404,6 +404,9 @@ class Swagger(object):
         # Handle 'produces' mimetypes documentation
         if 'produces' in doc[method]:
             operation['produces'] = doc[method]['produces']
+        # Handle 'consumes' mimetypes documentation
+        if 'consumes' in doc[method]:
+            operation['consumes'] = doc[method]['consumes']
         # Handle deprecated annotation
         if doc.get('deprecated') or doc[method].get('deprecated'):
             operation['deprecated'] = True

@@ -308,6 +308,10 @@ class Namespace(object):
     def produces(self, mimetypes):
         '''A decorator to specify the MIME types the API can produce'''
         return self.doc(produces=mimetypes)
+    
+    def consumes(self, mimetypes):
+        '''A decorator to specify the MIME types the API can consume'''
+        return self.doc(consumes=mimetypes)
 
     def deprecated(self, func):
         '''A decorator to mark a resource or a method as deprecated'''
